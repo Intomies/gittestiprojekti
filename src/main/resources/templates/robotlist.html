@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Friend List</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Robots</h1>
+
+	<h2>List of Robots:</h2>
+
+	<ul th:each="robot : ${robots}">
+
+		<li th:if="${not #lists.isEmpty(robots)}" th:text="${robot.robotModel} + ', ' + ${robot.robotSerial}">Robot Model</li>
+
+	</ul>
+
+	<h2>Add a new robot to the list:</h2>
+
+	<form action="#" th:action="@{/index}" th:object=${robot} method="get">
+		<p>
+			Robot Model: <input type="text" th:field="${robot.robotModel}" />
+		</p>
+		<p>
+			Robot Serial: <input type="text" th:field="${robot.robotSerial}" />
+		</p>
+		<input type="submit" value="Lähetä" /> <input type="reset"
+			value="Nollaa" />
+	</form>
+
+</body>
+</html>
